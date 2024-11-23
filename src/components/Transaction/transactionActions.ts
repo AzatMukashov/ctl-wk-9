@@ -1,11 +1,11 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axiosAPI from '../../axiosAPI.ts';
 
-interface Transaction {
-  id: string;
+export interface Transaction {
+  id?: string;
+  type: 'income' | 'expense';
   category: string;
   amount: number;
-  type: 'income' | 'expense';
   createdAt: string;
 }
 
@@ -19,7 +19,7 @@ export const addTransaction = createAsyncThunk('transactions/addTransaction', as
   return response.data;
 });
 
-export const updateTransaction = createAsyncThunk('transactions/updateTransaction', async ({id, transaction}: {id: string, transaction: Transaction}) => {
+export const updateTransaction = createAsyncThunk('transactions/updateTransaction', async ({ id, transaction }: { id: string, transaction: Transaction }) => {
   const response = await axiosAPI.put(`/transactions/${id}.json`, transaction);
   return response.data;
 });
@@ -27,4 +27,4 @@ export const updateTransaction = createAsyncThunk('transactions/updateTransactio
 export const deleteTransaction = createAsyncThunk('transactions/deleteTransaction', async (id: string) => {
   await axiosAPI.delete(`/transactions/${id}.json`);
   return id;
-})
+});

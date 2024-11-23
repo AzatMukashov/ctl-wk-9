@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axiosAPI from '../../axiosAPI.ts';
 
 interface Category {
-  id: string;
+  id?: string;
   name: string;
   type: 'income' | 'expense';
 }
