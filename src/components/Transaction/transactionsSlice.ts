@@ -3,10 +3,10 @@ import axiosAPI from '../../axiosAPI.ts';
 
 interface Transaction {
   id: string;
-  category: string;
-  amount: number;
-  type: 'income' | 'expense';
   createdAt: string;
+  categoryName: string;
+  type: 'income' | 'expense';
+  amount: number;
 }
 
 interface TransactionState {
